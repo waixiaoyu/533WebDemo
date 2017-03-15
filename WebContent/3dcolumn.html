@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+    <script type="text/javascript" src="js/highcharts.js"></script>
+    <script type="text/javascript" src="js/highcharts-3d.js"></script>
+    <script type="text/javascript" src="js/exporting.js"></script>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+
+<body bgcolor="black">
+    <div id="container"></div>
+</body>
+<script type="text/javascript">
+$(function() {
+    var category = [],
+        prob = [];
+    var fileindex="${index}";
+    var filename="data/topic_"+fileindex+"_word100.tsv";
+    d3.tsv(filename, function(data) {
+        var leaders = data
+            //.filter(function(d) { return +d.prob > 0; })
+            .map(function(d) {
+                return {
+                    text: d.word,
+                    size: +d.prob
+                };
+            })
+            .sort(function(a, b) {
+                return d3.descending(a.size, b.size);
+            })
+            .slice(0, 10);
+        for (var i = 0; i < 10; i++) {
+            category.push(leaders[i].text);
+            prob.push(leaders[i].size);
+        }
+        Highcharts.chart('container', {
+            chart: {
+                plotBackgroundColor: null,
+                plotBorderWidth: null,
+                plotShadow: false,
+                type: 'column',
+                options3d: {
+                    enabled: true,
+                    alpha: 10,
+                    beta: 25,
+                    depth: 70
+                }
+            },
+            title: {
+                text: 'Topic '+${index}+' - Top 10 frequent words'
+            },
+            /**
+                    subtitle: {
+                        text: 'Notice the difference between a 0 value and a null point'
+                    },*/
+            plotOptions: {
+                column: {
+                    depth: 25
+                }
+            },
+            xAxis: {
+                categories: category
+            },
+            yAxis: {
+                title: {
+                    text: null
+                }
+            },
+            series: [{
+                name: 'Probability',
+                data: prob
+            }]
+        });
+    });
+});
+</script>
+
+</html>
