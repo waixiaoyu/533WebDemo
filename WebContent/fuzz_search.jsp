@@ -30,7 +30,7 @@
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" >You can search</a>
+				<a class="navbar-brand">You can search</a>
 			</div>
 			<div id="navbar" class="navbar-collapse collapse">
 				<ul class="nav navbar-nav">
@@ -40,7 +40,8 @@
 					<li class="active"><a href="./fuzz_search.jsp">Fuzz Search</a></li>
 					<li>&nbsp;&nbsp;&nbsp;</li>
 					<a class="navbar-brand" href="#"> More detail in</a>
-					<li><a href="#" data-toggle="modal" data-target="#myModal">about us</a></li>
+					<li><a href="#" data-toggle="modal" data-target="#myModal">about
+							us</a></li>
 					<%@include file="about.html"%>
 				</ul>
 			</div>
@@ -56,13 +57,15 @@
 			<p>You can input a sentence or a phase, and see more related
 				article about this sentence!</p>
 			<form id="searchform" role="search" method="post"
-				action="articleSearch">
+				action="articleFuzzSearch">
 				<div class="row">
 					<div class="col-md-6">
 						<div class="form-group form-group-lg">
-							<input type="text" id="search" name="search" class="form-control" required oninvalid="setCustomValidity('Please input some key words!');" oninput="setCustomValidity('');"
-								data-provide="typeahead" autocomplete="off"
-								placeholder="Searching Words">
+							<input type="text" id="search" name="search" class="form-control"
+								required
+								oninvalid="setCustomValidity('Please input a sentence!');"
+								oninput="setCustomValidity('');" data-provide="typeahead"
+								autocomplete="off" placeholder="Searching Words">
 						</div>
 					</div>
 					<div class="col-md-2">
@@ -85,7 +88,7 @@
 	<script src="./js/Bootstrap-3-Typeahead-master/bootstrap3-typeahead.js"></script>
 	<script src="js/spin.js"></script>
 	<script src="js/showspin.js"></script>
-	<script type="text/javascript">
+	<!--  	<script type="text/javascript">
 		$.get('data/title-id.json', function(data) {
 			$("#search").typeahead({
 				source : data
@@ -108,7 +111,7 @@
 				// Nothing is active so it is a new value (or maybe empty value)
 			}
 		});
-	</script>
+	</script>-->
 </body>
 
 </html>
