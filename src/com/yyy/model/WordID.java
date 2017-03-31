@@ -36,7 +36,7 @@ public class WordID {
 		Result r = HBaseDAO.get(tableName, searchWord);
 		Cell c = r.getColumnLatestCell(familyName.getBytes(), "".getBytes());
 		if (c == null) {
-			return null;
+			return "";
 		} else {
 			return new String(CellUtil.cloneValue(c));
 		}

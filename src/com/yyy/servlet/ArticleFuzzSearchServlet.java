@@ -48,11 +48,14 @@ public class ArticleFuzzSearchServlet extends HttpServlet {
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 
 		String sentence = request.getParameter("search");
-		String sent = "Showers continued throughout the week in the Bahia cocoa zone.";
+		if (StringUtils.isEmpty(sentence) || sentence.split(" ").length < 2) {
+			sentence = "Showers continued throughout the week in the Bahia cocoa zone.";
+		}
 
-		List<ArticleMeasure> lAMs = fuzzSearch(sent);
-		
+		List<ArticleMeasure> lAMs = fuzzSearch(sentence);
+
 		request.setAttribute("lAMs", lAMs);
+		request.setAttribute("sentence", sentence);
 
 		request.getRequestDispatcher("article_fuzz_search.jsp").forward(request, response);
 	}

@@ -80,9 +80,18 @@
 		</div>
 	</div>
 	<div class="container" >
+		<a class="list-group-item active">
+			<h3 class="list-group-item-heading">Your Search Sentence : <h2>  ${sentence}</h2></h3>
+		</a>
+	
 		<div class="col-md-12" id="articles">
 		
+		
+		
 			<c:forEach items="${lAMs}" var="am" varStatus="vs">
+				<c:if test="${empty am}">                       
+					<h2>Sorry, there is no any relevant content</h2>
+				</c:if>				
 				<hr style=' height:2px;border:none;border-top:2px solid #185598;' />  
 				<a href="articleTopicDist?articleIndex=${am.id}" class="list-group-item active">
 					<h4 class="list-group-item-heading">${am.title}</h4>
@@ -92,7 +101,7 @@
 				</a>
 				<div class="list-group-item">
 					<div class="btn-group" data-toggle="buttons">
-						<button type='submit' class='btn btn-primary'>Mean Sim: 0.0909909870</button>
+						<button type='submit' class='btn btn-primary'>Mean Sim: ${am.meanScore }</button>
 						&nbsp;
 						 <button type='submit' class='btn btn-primary'>Max Sim:${am.maxScore } </button>
 					</div>

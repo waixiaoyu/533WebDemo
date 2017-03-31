@@ -12,6 +12,8 @@ public class ArticleMeasure {
 	private String title;
 
 	private double maxScore = Double.NEGATIVE_INFINITY;
+	private double meanScore = Double.NEGATIVE_INFINITY;
+
 	private int maxId = -1;
 
 	public void addScore(double d) {
@@ -133,6 +135,15 @@ public class ArticleMeasure {
 
 	public void setMaxScore(double maxScore) {
 		this.maxScore = maxScore;
+	}
+
+	public double getMeanScore() {
+		this.meanScore = mean();
+		return meanScore;
+	}
+
+	public void setMeanScore(double meanScore) {
+		this.meanScore = meanScore;
 	}
 
 }
