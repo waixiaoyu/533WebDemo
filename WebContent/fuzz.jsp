@@ -37,7 +37,7 @@
 					<li><a href="topic">Topic</a></li>
 					<li><a href="./word.jsp">Word</a></li>
 					<li><a href="./article.jsp">Article</a></li>
-					<li class="active"><a href="./fuzz_search.jsp">Fuzz Search</a></li>
+					<li class="active"><a href="./fuzz.jsp">Fuzz Search</a></li>
 					<li>&nbsp;&nbsp;&nbsp;</li>
 					<a class="navbar-brand" href="#"> More detail in</a>
 					<li><a href="#" data-toggle="modal" data-target="#myModal">about
@@ -64,12 +64,11 @@
 							<input type="text" id="search" name="search" class="form-control"
 								required
 								oninvalid="setCustomValidity('Please input a sentence!');"
-								oninput="setCustomValidity('');" data-provide="typeahead"
-								autocomplete="off" placeholder="Searching Words">
+								oninput="setCustomValidity('');" autocomplete="off" placeholder="Searching Words">
 						</div>
 					</div>
 					<div class="col-md-2">
-						<button type="submit" class="btn btn-primary btn-lg "
+						<button type="button" class="btn btn-primary btn-lg "
 							id="searchbtn" onclick="showspin()">Search</button>
 					</div>
 				</div>
@@ -85,7 +84,6 @@
 	<!-- Placed at the end of the document so the pages load faster -->
 	<script src="js/jquery.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
-	<script src="./js/Bootstrap-3-Typeahead-master/bootstrap3-typeahead.js"></script>
 	<script src="js/spin.js"></script>
 	<script src="js/showspin.js"></script>
 	<!--  	<script type="text/javascript">

@@ -44,7 +44,7 @@
 					<li><a href="topic">Topic</a></li>
 					<li  class="active"><a href="./word.jsp">Word</a></li>
 					<li><a href="./article.jsp">Article</a></li>
-					<li><a href="./fuzz_search.jsp">Fuzz Search</a></li>
+					<li><a href="./fuzz.jsp">Fuzz Search</a></li>
 					<li>&nbsp;&nbsp;&nbsp;</li>
 					<a class="navbar-brand" href="#"> More detail in</a>
 					<li><a href="#" data-toggle="modal" data-target="#myModal">about us</a></li>
@@ -75,7 +75,7 @@
 						</div>
 					</div>
 					<div class="col-md-2">
-						<button type="submit" class="btn btn-primary btn-lg "
+						<button type="button" class="btn btn-primary btn-lg "
 							id="searchbtn" onclick="showspin()">Search</button>
 					</div>
 				</div>
