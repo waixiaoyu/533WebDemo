@@ -35,7 +35,11 @@ public class WordID {
 	private String getDataFromHbase(String tableName, String familyName, String searchWord) throws IOException {
 		Result r = HBaseDAO.get(tableName, searchWord);
 		Cell c = r.getColumnLatestCell(familyName.getBytes(), "".getBytes());
-		return new String(CellUtil.cloneValue(c));
+		if (c == null) {
+			return null;
+		} else {
+			return new String(CellUtil.cloneValue(c));
+		}
 	}
 
 	public String getWord() {
