@@ -18,10 +18,10 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.server.core.container/org.eclipse.jst.server.tomcat.runtimeTarget/Apache Tomcat v8.5"/>
-	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/mechaglot_lib/Classifier4J-0.6.jar"/>
-	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/mechaglot_lib/multilayerPerceptronCS.jar"/>
-	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/mechaglot_lib/RBFNetwork.jar"/>
-	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/mechaglot_lib/simmetrics_jar_v1_6_2_d07_02_07.jar"/>
-	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/mechaglot_lib/weka.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/Classifier4J-0.6.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/multilayerPerceptronCS.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/RBFNetwork.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/simmetrics_jar_v1_6_2_d07_02_07.jar"/>
+	<classpathentry kind="lib" path="/533project/mechaglot_lib/weka.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

@@ -119,4 +119,20 @@ public class ArticleMeasure {
 		return lSentences;
 	}
 
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public void setContent(String content) {
+		this.content = content;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public void setMaxScore(double maxScore) {
+		this.maxScore = maxScore;
+	}
+
 }

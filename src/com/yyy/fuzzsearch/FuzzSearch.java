@@ -41,44 +41,44 @@ public class FuzzSearch {
 	}
 
 	public static void main(String[] args) throws IOException {
-		FindRelatedArticleId f = new FindRelatedArticleId();
-		Tagging t = new Tagging();
-		String sent = "Showers continued throughout the week in the Bahia cocoa zone.";
-		List<String> l = t.searchByTag(sent, "NN");
-		List<WordTopicProb> wtps = new LinkedList<WordTopicProb>();
-		for (String str : l) {
-			wtps.add(new WordTopicProb(str));
-		}
-		f.getHighestProbInTopic(wtps);
-
-		Iterator<WordTopicProb> it = wtps.iterator();
-		while (it.hasNext()) {
-			WordTopicProb wordTopicProb = (WordTopicProb) it.next();
-			if (StringUtils.isEmpty(wordTopicProb.getTopicId())) {
-				it.remove();
-			}
-		}
-		System.out.println(wtps);
-		Set<String> setId = f.searchArticleId(wtps);
-		System.out.println(setId);
-
-		FuzzSearch fs = new FuzzSearch();
-		List<ArticleMeasure> lAms = new ArrayList<ArticleMeasure>();
-
-		for (String id : setId) {
-			ArticleMeasure am = fs.getArticleAMById(id);
-			if (am != null) {
-				lAms.add(fs.matchArticle(sent, am));
-			}
-			System.out.println(id);
-		}
-		// sort by max score
-		lAms.sort(new Comparator<ArticleMeasure>() {
-			public int compare(ArticleMeasure o1, ArticleMeasure o2) {
-				return (int) Math.signum(o2.getMaxScore() - o1.getMaxScore());
-			}
-		});
-		return;
+//		FindRelatedArticleId f = new FindRelatedArticleId();
+//		Tagging t = new Tagging();
+//		String sent = "Showers continued throughout the week in the Bahia cocoa zone.";
+//		List<String> l = t.searchByTag(sent, "NN");
+//		List<WordTopicProb> wtps = new LinkedList<WordTopicProb>();
+//		for (String str : l) {
+//			wtps.add(new WordTopicProb(str));
+//		}
+//		f.getHighestProbInTopic(wtps);
+//
+//		Iterator<WordTopicProb> it = wtps.iterator();
+//		while (it.hasNext()) {
+//			WordTopicProb wordTopicProb = (WordTopicProb) it.next();
+//			if (StringUtils.isEmpty(wordTopicProb.getTopicId())) {
+//				it.remove();
+//			}
+//		}
+//		System.out.println(wtps);
+//		Set<String> setId = f.searchArticleId(wtps);
+//		System.out.println(setId);
+//
+//		FuzzSearch fs = new FuzzSearch();
+//		List<ArticleMeasure> lAms = new ArrayList<ArticleMeasure>();
+//
+//		for (String id : setId) {
+//			ArticleMeasure am = fs.getArticleAMById(id);
+//			if (am != null) {
+//				lAms.add(fs.matchArticle(sent, am));
+//			}
+//			System.out.println(id);
+//		}
+//		// sort by max score
+//		lAms.sort(new Comparator<ArticleMeasure>() {
+//			public int compare(ArticleMeasure o1, ArticleMeasure o2) {
+//				return (int) Math.signum(o2.getMaxScore() - o1.getMaxScore());
+//			}
+//		});
+//		return;
 	}
 
 	@Deprecated
@@ -94,7 +94,7 @@ public class FuzzSearch {
 	 * @return
 	 * @throws IOException
 	 */
-	private ArticleMeasure getArticleAMById(String rowKey) throws IOException {
+	public ArticleMeasure getArticleAMById(String rowKey) throws IOException {
 
 		Get get = new Get(rowKey.getBytes());
 		get.addFamily("article".getBytes());
@@ -127,7 +127,7 @@ public class FuzzSearch {
 	 * use source sentence to match target article, and return scores sentence
 	 * by sentence, which store in AM
 	 */
-	private ArticleMeasure matchArticle(String srcSen, ArticleMeasure am) {
+	public ArticleMeasure matchArticle(String srcSen, ArticleMeasure am) {
 		String[] sentences = am.getContent().trim().split(SEPARATOR_DOT);
 		for (String string : sentences) {
 			am.addScore(computeSentenceScore(srcSen, string.trim()));

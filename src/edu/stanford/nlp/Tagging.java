@@ -19,15 +19,27 @@ public class Tagging {
 
 	private static LexicalizedParser lp;
 
-	static {
-
-		lp = LexicalizedParser.loadModel(PARSE_MODEL_PATH);
+	public static void main(String[] args) {
+		// Tagging t = new Tagging();
+		// String sent = "Showers continued throughout the week in the Bahia
+		// cocoa zone.";
+		// List<String> l = t.searchByTag(sent, "NN");
 	}
 
-	public static void main(String[] args) {
-//		Tagging t = new Tagging();
-//		String sent = "Showers continued throughout the week in the Bahia cocoa zone.";
-//		List<String> l = t.searchByTag(sent, "NN");
+	public static void init(String path) {
+		if (lp == null) {
+			lp = LexicalizedParser.loadModel(path + PARSE_MODEL_PATH);
+		}
+		if (lp != null) {
+			System.out.println("tagging init success");
+		}
+	}
+
+	public Tagging() {
+		super();
+		if (lp == null) {
+			lp = LexicalizedParser.loadModel("./WebContent/resource/" + PARSE_MODEL_PATH);
+		}
 	}
 
 	public List<String> searchByTag(String sent, String pre) {

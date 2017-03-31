@@ -131,14 +131,8 @@
 		});
 		$(function() {
 
-			var index = $
-			{
-				topicIndex
-			}
-			var pr = $
-			{
-				topicPr
-			}
+			var index = ${topicIndex}
+			var pr = ${topicPr}
 
 			for (var i = 0; i < index.length; i++) {
 				var btn = $("<div class='col-md-3'><button type='submit' class='btn btn-primary' id='Btn"
