@@ -81,17 +81,19 @@
 	</div>
 	<div class="container" >
 		<a class="list-group-item active">
-			<h3 class="list-group-item-heading">Your Search Sentence : <h2>  ${sentence}</h2></h3>
+			<h3 class="list-group-item-heading">Your Search Sentence : <h2>&nbsp;&nbsp;${sentence}</h2></h3>
 		</a>
 	
 		<div class="col-md-12" id="articles">
-		
-		
+				<c:if test="${empty lAMs}">
+					<hr style=' height:2px;border:none;border-top:2px solid #185598;' />  
+					<a class="list-group-item active">
+						<h3 class="list-group-item-heading">Sorry, there is no any relevant content !!!</h3>
+					</a>                       
+				</c:if>	
 		
 			<c:forEach items="${lAMs}" var="am" varStatus="vs">
-				<c:if test="${empty am}">                       
-					<h2>Sorry, there is no any relevant content</h2>
-				</c:if>				
+			
 				<hr style=' height:2px;border:none;border-top:2px solid #185598;' />  
 				<a href="articleTopicDist?articleIndex=${am.id}" class="list-group-item active">
 					<h4 class="list-group-item-heading">${am.title}</h4>

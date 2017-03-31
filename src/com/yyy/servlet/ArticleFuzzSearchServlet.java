@@ -48,7 +48,7 @@ public class ArticleFuzzSearchServlet extends HttpServlet {
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 
 		String sentence = request.getParameter("search");
-		if (StringUtils.isEmpty(sentence) || sentence.split(" ").length < 2) {
+		if (StringUtils.isEmpty(sentence) || sentence.equals("test")) {
 			sentence = "Showers continued throughout the week in the Bahia cocoa zone.";
 		}
 
