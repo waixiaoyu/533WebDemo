@@ -1,12 +1,7 @@
 package com.yyy.fuzzsearch;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.Iterator;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.Set;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.hadoop.hbase.Cell;
@@ -19,14 +14,11 @@ import org.apache.hadoop.hbase.client.Table;
 import com.mechaglot_Alpha2.controller.Calculate;
 import com.yyy.dao.HBaseDAO;
 import com.yyy.model.ArticleMeasure;
-import com.yyy.model.WordTopicProb;
-
-import edu.stanford.nlp.Tagging;
 
 public class FuzzSearch {
 
 	private static final String ARTICLE_TABLE_NAME = "ARTICLE_ALIAS_TITLE_CONTENT";
-	private static final String SEPARATOR_DOT = "\\.";
+	private static final String SEPARATOR_DOT_BLANK = "\\. ";
 	// use a table in this class to avoid get table repeatly
 	private static Table table;
 
@@ -128,8 +120,9 @@ public class FuzzSearch {
 	 * by sentence, which store in AM
 	 */
 	public ArticleMeasure matchArticle(String srcSen, ArticleMeasure am) {
-		String[] sentences = am.getContent().trim().split(SEPARATOR_DOT);
+		String[] sentences = am.getContent().trim().split(SEPARATOR_DOT_BLANK);
 		for (String string : sentences) {
+			string=string.trim();
 			am.addScore(computeSentenceScore(srcSen, string.trim()));
 			am.addSentence(string);
 		}

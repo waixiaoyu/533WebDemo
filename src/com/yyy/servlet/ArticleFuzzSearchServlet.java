@@ -1,6 +1,5 @@
 package com.yyy.servlet;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -69,37 +68,56 @@ public class ArticleFuzzSearchServlet extends HttpServlet {
 
 		request.setAttribute("lAMs", lAMs);
 		request.setAttribute("sentence", sentence);
-
+		
+		
 		request.getRequestDispatcher("article_fuzz_search.jsp").forward(request, response);
 	}
 
+	/**
+	 * mainly procedures about fuzz search are in the following function: Input
+	 * Sentence -> tagging words -> related topic -> high related articles under
+	 * one topic -> match sentences in one article -> compute score -> sort
+	 * articles
+	 */
 	private List<ArticleMeasure> fuzzSearch(String sent) throws IOException {
-		FindRelatedArticleId f = new FindRelatedArticleId();
+		// tagging the input sentence, use "NN"
 		Tagging t = new Tagging();
 		List<String> l = t.searchByTag(sent, "NN");
+
+		// find the relation between words and topics
 		List<WordTopicProb> wtps = new LinkedList<WordTopicProb>();
 		for (String str : l) {
 			wtps.add(new WordTopicProb(str));
 		}
+
+		/**
+		 * according to input, find the most related topic.
+		 * WordTopicProb=wordid+topicid+prob of word in one topic
+		 */
+		FindRelatedArticleId f = new FindRelatedArticleId();
 		f.getHighestProbInTopic(wtps);
 		Iterator<WordTopicProb> it = wtps.iterator();
+		// eliminate invalid word
 		while (it.hasNext()) {
 			WordTopicProb wordTopicProb = (WordTopicProb) it.next();
 			if (StringUtils.isEmpty(wordTopicProb.getTopicId())) {
 				it.remove();
 			}
 		}
-		System.out.println(wtps);
+		System.out.println(wtps);// valid word and its topic
+
+		// according to topic find the related article under topics
 		Set<String> setId = f.searchArticleId(wtps);
 		System.out.println(setId);
 
 		FuzzSearch fs = new FuzzSearch();
 		List<ArticleMeasure> lAms = new ArrayList<ArticleMeasure>();
 
-		//add each AM to list
+		// add each AM to list
 		for (String id : setId) {
 			ArticleMeasure am = fs.getArticleAMById(id);
 			if (am != null) {
+				// computing the score for every sentence for one artile
 				lAms.add(fs.matchArticle(sent, am));
 			}
 		}
