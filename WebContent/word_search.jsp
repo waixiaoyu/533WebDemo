@@ -35,9 +35,10 @@
 			<div id="navbar" class="navbar-collapse collapse">
 				<ul class="nav navbar-nav">
 					<li><a href="topic">Topic</a></li>
-					<li class="active"><a href="./word.jsp">Word</a></li>
+					<li  class="active"><a href="./word.jsp">Word</a></li>
 					<li><a href="./article.jsp">Article</a></li>
-					<li>hidden element</li>
+					<li><a href="./fuzz.jsp">Fuzz Search</a></li>
+					<li>&nbsp;&nbsp;&nbsp;</li>
 					<a class="navbar-brand" href="#"> More detail in</a>
 					<li><a href="#" data-toggle="modal" data-target="#myModal">about us</a></li>
 					<%@include file="about.html"%>

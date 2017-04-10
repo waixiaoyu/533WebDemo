@@ -20,10 +20,9 @@ public class Tagging {
 	private static LexicalizedParser lp;
 
 	public static void main(String[] args) {
-		// Tagging t = new Tagging();
-		// String sent = "Showers continued throughout the week in the Bahia
-		// cocoa zone.";
-		// List<String> l = t.searchByTag(sent, "NN");
+		 Tagging t = new Tagging();
+		 String sent = "Showers continued throughout the week in the Bahia cocoa zone.";
+		 List<String> l = t.searchByTag(sent, "NN");
 	}
 
 	public static void init(String path) {

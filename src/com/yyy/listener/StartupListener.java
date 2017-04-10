@@ -39,6 +39,7 @@ public class StartupListener implements ServletContextListener {
 		HBaseDAO.init();
 		//init resource path
 		String resourcePath = arg0.getServletContext().getRealPath("/") + "resource" + File.separator;
+		System.out.println(resourcePath);
 		Tagging.init(resourcePath);
 		Calculate.init(resourcePath);
 	}
