@@ -39,6 +39,19 @@ public class ArticleFuzzSearchServlet extends HttpServlet {
 		// TODO Auto-generated constructor stub
 	}
 
+	public static void main(String[] args) throws IOException {
+		ArticleFuzzSearchServlet a = new ArticleFuzzSearchServlet();
+		String sentence = "";
+		if (StringUtils.isEmpty(sentence) || sentence.equals("test")) {
+			sentence = "Showers continued throughout the week in the Bahia cocoa zone.";
+		}
+
+		List<ArticleMeasure> lAMs = a.fuzzSearch(sentence);
+		for (ArticleMeasure articleMeasure : lAMs) {
+			System.out.println(articleMeasure.getMaxId());
+		}
+	}
+
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
@@ -83,6 +96,7 @@ public class ArticleFuzzSearchServlet extends HttpServlet {
 		FuzzSearch fs = new FuzzSearch();
 		List<ArticleMeasure> lAms = new ArrayList<ArticleMeasure>();
 
+		//add each AM to list
 		for (String id : setId) {
 			ArticleMeasure am = fs.getArticleAMById(id);
 			if (am != null) {

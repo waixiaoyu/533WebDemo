@@ -3,6 +3,10 @@ package com.yyy.model;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 1 Am = 1 article, it contains all sentences and its scores
+ *
+ */
 public class ArticleMeasure {
 	private List<Double> lScores;
 	private List<String> lSentences;
