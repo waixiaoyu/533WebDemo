@@ -99,7 +99,21 @@
 					<h4 class="list-group-item-heading">${am.title}</h4>
 				</a> 
 				<a class="list-group-item">
-					<p class="list-group-item-text">${am.content }</p>
+					<!-- <p class="list-group-item-text">${am.content }</p>  -->
+					<p class="list-group-item-text">
+					<c:forEach items="${am.lSentences}" var="sent" varStatus="vs">
+					<c:choose>
+					   <c:when test="${sent==am.lSentences[am.maxId]}">  
+							<font color="#FF0000">${sent}.</font>
+					   </c:when>
+					   <c:otherwise> 
+							${sent}.
+					   </c:otherwise>
+					</c:choose>
+						
+					</c:forEach> 
+					</p>
+					
 				</a>
 				<div class="list-group-item">
 					<div class="btn-group" data-toggle="buttons">
